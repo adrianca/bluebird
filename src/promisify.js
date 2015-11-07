@@ -277,7 +277,7 @@ function promisify(callback, receiver, multiArgs) {
                                 callback, null, multiArgs);
 }
 
-Promise.promisify = function (fn, options) {
+Promise.promisify = function (fn, options, context) {
     if (typeof fn !== "function") {
         throw new TypeError(FUNCTION_ERROR + util.classString(fn));
     }
@@ -286,6 +286,7 @@ Promise.promisify = function (fn, options) {
     }
     options = Object(options);
     var receiver = options.context === undefined ? THIS : options.context;
+    if (context != null) receiver = context;
     var multiArgs = !!options.multiArgs;
     var ret = promisify(fn, receiver, multiArgs);
     util.copyDescriptors(fn, ret, propsFilter);

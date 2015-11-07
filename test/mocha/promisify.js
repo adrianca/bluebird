@@ -72,7 +72,7 @@ var syncSuccessMultiOptEnabledNoReceiver = Promise.promisify(syncSuccessNodeMult
 var successMultiOptEnabledWithReceiver = Promise.promisify(successNodeMultipleValues, {multiArgs: true, context: THIS});
 var syncSccessMultiOptEnabledWithReceiver = Promise.promisify(syncSuccessNodeMultipleValues, {multiArgs: true, context: THIS});
 var successMultiOptDisabledWithReceiver = Promise.promisify(successNodeMultipleValues, {context: THIS});
-var syncSccessMultiOptDisabledWithReceiver = Promise.promisify(syncSuccessNodeMultipleValues, {context: THIS});
+var syncSccessMultiOptDisabledWithReceiver = Promise.promisify(syncSuccessNodeMultipleValues, {}, THIS);
 var successMulti = successMultiOptDisabledNoReceiver;
 var syncSuccessMulti = syncSuccessMultiOptDisabledNoReceiver;
 describe("when calling promisified function it should ", function(){
